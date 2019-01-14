@@ -1,0 +1,30 @@
+<h5>Topics</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for topic <- @topics do %>
+    <tr>
+      <td><%= topic.title %></td>
+
+      <td>
+        <%= link "Show", to: Routes.topic_path(@conn, :show, id: topic.id) %>
+        <%= link "Edit", to: Routes.topic_path(@conn, :edit, id: topic.id) %>
+        <%= link "Delete", to: Routes.topic_path(@conn, :delete, id: topic.id), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<div class="fixed-action-btn">
+  <%= link to: Routes.topic_path(@conn, :new), class: "btn-floating btn-large waves effect waves-light red" do %>
+    <i class="material-icons">add</i>
+  <% end %>
+</div>
